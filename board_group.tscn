@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://nuvqf2inewy2"]
+
+[ext_resource type="Material" uid="uid://c7wje703q4hng" path="res://woodBoard.tres" id="3_ibu3u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dn06y"]
+size = Vector3(0.177734, 3.75696, 2.61176)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ibu3u"]
+size = Vector3(2.12543, 3.78015, 0.0996092)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_plotg"]
+size = Vector3(1.76709, 0.0927563, 3.64884)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_plotg"]
+
+[node name="StaticBody3D" type="StaticBody3D"]
+disable_mode = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(9.97265, 0, 0, 0, 9.97265, 0, 0, 0, 9.97265, -9.64978, 18.6826, 0.274969)
+shape = SubResource("BoxShape3D_dn06y")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(9.97265, 0, 0, 0, 9.97265, 0, 0, 0, 9.97265, 9.68123, 18.4491, -1.01851)
+shape = SubResource("BoxShape3D_dn06y")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(9.97265, 0, 0, 0, 9.97265, 0, 0, 0, 9.97265, 0.0111795, 18.9041, -13.416)
+shape = SubResource("BoxShape3D_ibu3u")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="."]
+transform = Transform3D(9.97265, 0, 0, 0, 9.97265, 0, 0, 0, 9.97265, 0.0111795, 18.5178, 12.346)
+shape = SubResource("BoxShape3D_ibu3u")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
+transform = Transform3D(9.97265, 0, 0, 0, 9.97265, 0, 0, 0, 9.97265, -0.0219937, -0.357195, 5.35184)
+shape = SubResource("BoxShape3D_plotg")
+debug_color = Color(0.760784, 0, 0.396078, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-7.83821e-07, 0, 17.9317, 0, 17.9317, 0, -17.9317, 0, -7.83821e-07, -0.0872955, 0.0283203, 4.52657)
+mesh = SubResource("PlaneMesh_plotg")
+surface_material_override/0 = ExtResource("3_ibu3u")

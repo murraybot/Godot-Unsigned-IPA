@@ -1,0 +1,32 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://b8hfjyef8011i"]
+
+[ext_resource type="Texture2D" uid="uid://dsqxw018xo77h" path="res://Assets/Textures/d6back.png" id="1_cpdsa"]
+[ext_resource type="Texture2D" uid="uid://vs7awg8pgvvr" path="res://Assets/Textures/d6Nums.png" id="2_1qnii"]
+
+[resource]
+transparency = 1
+depth_draw_mode = 1
+shading_mode = 2
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.854848, 0.684939, 0.385202, 0.666667)
+albedo_texture = ExtResource("1_cpdsa")
+roughness = 0.72
+emission = Color(0.0665091, 0.0431507, 0.0163508, 1)
+emission_energy_multiplier = 4.82
+emission_operator = 1
+emission_texture = ExtResource("2_1qnii")
+ao_light_affect = 0.65
+ao_texture = ExtResource("2_1qnii")
+ao_texture_channel = 3
+subsurf_scatter_strength = 0.31
+subsurf_scatter_texture = ExtResource("2_1qnii")
+refraction_enabled = true
+refraction_texture = ExtResource("2_1qnii")
+detail_enabled = true
+detail_mask = ExtResource("1_cpdsa")
+detail_blend_mode = 3
+detail_albedo = ExtResource("2_1qnii")
+texture_filter = 4
+grow_amount = 1.273
+proximity_fade_distance = 2677.36

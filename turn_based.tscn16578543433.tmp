@@ -1,0 +1,254 @@
+[gd_scene load_steps=17 format=3 uid="uid://bq6vqtq6vpadi"]
+
+[ext_resource type="PackedScene" uid="uid://nuvqf2inewy2" path="res://board_group.tscn" id="1_cwuk6"]
+[ext_resource type="PackedScene" uid="uid://chicp3ybyxpgd" path="res://Dice/dEight.tscn" id="2_otnlf"]
+[ext_resource type="PackedScene" uid="uid://cu4c7ttoonbqx" path="res://Dice/dFour.tscn" id="3_aeibh"]
+[ext_resource type="PackedScene" uid="uid://b3ui0g2syhj75" path="res://Dice/dSixer.tscn" id="4_1csm8"]
+[ext_resource type="PackedScene" uid="uid://coqnwnwqqpk2i" path="res://Dice/dTen.tscn" id="5_ie0dc"]
+[ext_resource type="PackedScene" uid="uid://d4j5j1uwwjnrt" path="res://Dice/dTwelve.tscn" id="6_spsmv"]
+[ext_resource type="PackedScene" uid="uid://duaakrb724upj" path="res://Dice/dTwenty.tscn" id="7_s0o5p"]
+[ext_resource type="Script" uid="uid://dnqnnc52yp8nt" path="res://Scripts/game_manager.gd" id="8_bk1qm"]
+[ext_resource type="PackedScene" uid="uid://digkdaoorpqne" path="res://Dice/d_10_2.tscn" id="9_xinx0"]
+[ext_resource type="PackedScene" uid="uid://db3u5k215vpxf" path="res://top_bar.tscn" id="10_otnlf"]
+[ext_resource type="Script" uid="uid://cm8twomwplcl0" path="res://top_bar.gd" id="11_aeibh"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p2goe"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_vmwg3"]
+sky_material = SubResource("ProceduralSkyMaterial_p2goe")
+
+[sub_resource type="Environment" id="Environment_gn5tf"]
+background_mode = 2
+sky = SubResource("Sky_vmwg3")
+tonemap_mode = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gn5tf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_017oo"]
+albedo_color = Color(0.0851939, 0.635507, 0.781768, 1)
+
+[node name="TurnBased" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+light_energy = 0.398
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gn5tf")
+
+[node name="StaticBody3D" parent="." instance=ExtResource("1_cwuk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.123657, 0, -0.114014)
+
+[node name="Camera3D" type="Camera3D" parent="." groups=["cam"]]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.125526, 23.5769, 4.15485)
+keep_aspect = 0
+projection = 1
+size = 20.0
+near = 0.024
+far = 251.45
+
+[node name="D8" parent="." instance=ExtResource("2_otnlf")]
+transform = Transform3D(1.19326, 0, 0, 0, 1.19326, 0, 0, 0, 1.19326, 0.0295453, 1.61632, -0.301979)
+
+[node name="D4" parent="." instance=ExtResource("3_aeibh")]
+transform = Transform3D(1.19326, 0, 0, 0, 1.19326, 0, 0, 0, 1.19326, -4.83157, 1.61632, 5.41879)
+
+[node name="D6" parent="." instance=ExtResource("4_1csm8")]
+transform = Transform3D(1.19326, 0, 0, 0, 1.19326, 0, 0, 0, 1.19326, -5.78867, 1.61632, -0.301979)
+
+[node name="D10" parent="." instance=ExtResource("5_ie0dc")]
+transform = Transform3D(1.19326, 0, 0, 0, 1.19326, 0, 0, 0, 1.19326, 0.0295453, 1.61632, -4.79188)
+
+[node name="D12" parent="." instance=ExtResource("6_spsmv")]
+transform = Transform3D(1.19326, 0, 0, 0, 1.19326, 0, 0, 0, 1.19326, 4.65887, 1.61632, -0.301979)
+
+[node name="D20" parent="." instance=ExtResource("7_s0o5p")]
+transform = Transform3D(1.19326, 0, 0, 0, 1.19326, 0, 0, 0, 1.19326, 0.0295453, 2.52615, 6.74593)
+
+[node name="GameManager" type="Node" parent="." groups=["manager"]]
+script = ExtResource("8_bk1qm")
+
+[node name="D10-2" parent="." instance=ExtResource("9_xinx0")]
+transform = Transform3D(1.19326, 0, 0, 0, 1.19326, 0, 0, 0, 1.19326, 4.80258, 0.876205, 4.47105)
+
+[node name="ScoreGrid" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.26117, 0, 18.053)
+visible = false
+
+[node name="1" type="MeshInstance3D" parent="ScoreGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.19835, 0.0630169, -3.76459)
+mesh = SubResource("PlaneMesh_gn5tf")
+surface_material_override/0 = SubResource("StandardMaterial3D_017oo")
+
+[node name="2" type="MeshInstance3D" parent="ScoreGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.948345, 0.0630169, -3.76459)
+mesh = SubResource("PlaneMesh_gn5tf")
+surface_material_override/0 = SubResource("StandardMaterial3D_017oo")
+
+[node name="3" type="MeshInstance3D" parent="ScoreGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.30165, 0.0630169, -3.76459)
+mesh = SubResource("PlaneMesh_gn5tf")
+surface_material_override/0 = SubResource("StandardMaterial3D_017oo")
+
+[node name="4" type="MeshInstance3D" parent="ScoreGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.55165, 0.0630169, -3.76459)
+mesh = SubResource("PlaneMesh_gn5tf")
+surface_material_override/0 = SubResource("StandardMaterial3D_017oo")
+
+[node name="5" type="MeshInstance3D" parent="ScoreGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.19835, 0.0630169, -1.51459)
+mesh = SubResource("PlaneMesh_gn5tf")
+surface_material_override/0 = SubResource("StandardMaterial3D_017oo")
+
+[node name="6" type="MeshInstance3D" parent="ScoreGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.948345, 0.0630169, -1.51459)
+mesh = SubResource("PlaneMesh_gn5tf")
+surface_material_override/0 = SubResource("StandardMaterial3D_017oo")
+
+[node name="7" type="MeshInstance3D" parent="ScoreGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.30165, 0.0630169, -1.51459)
+mesh = SubResource("PlaneMesh_gn5tf")
+surface_material_override/0 = SubResource("StandardMaterial3D_017oo")
+
+[node name="8" type="MeshInstance3D" parent="ScoreGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.55165, 0.0630169, -1.51459)
+mesh = SubResource("PlaneMesh_gn5tf")
+surface_material_override/0 = SubResource("StandardMaterial3D_017oo")
+
+[node name="9" type="MeshInstance3D" parent="ScoreGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.19835, 0.0630169, 0.735411)
+mesh = SubResource("PlaneMesh_gn5tf")
+surface_material_override/0 = SubResource("StandardMaterial3D_017oo")
+
+[node name="10" type="MeshInstance3D" parent="ScoreGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.948345, 0.0630169, 0.735411)
+mesh = SubResource("PlaneMesh_gn5tf")
+surface_material_override/0 = SubResource("StandardMaterial3D_017oo")
+
+[node name="11" type="MeshInstance3D" parent="ScoreGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.30165, 0.0630169, 0.735411)
+mesh = SubResource("PlaneMesh_gn5tf")
+surface_material_override/0 = SubResource("StandardMaterial3D_017oo")
+
+[node name="12" type="MeshInstance3D" parent="ScoreGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.55165, 0.0630169, 0.735411)
+mesh = SubResource("PlaneMesh_gn5tf")
+surface_material_override/0 = SubResource("StandardMaterial3D_017oo")
+
+[node name="13" type="MeshInstance3D" parent="ScoreGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.19835, 0.0630169, 2.98541)
+mesh = SubResource("PlaneMesh_gn5tf")
+surface_material_override/0 = SubResource("StandardMaterial3D_017oo")
+
+[node name="14" type="MeshInstance3D" parent="ScoreGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.948345, 0.0630169, 2.98541)
+mesh = SubResource("PlaneMesh_gn5tf")
+surface_material_override/0 = SubResource("StandardMaterial3D_017oo")
+
+[node name="15" type="MeshInstance3D" parent="ScoreGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.30165, 0.0630169, 2.98541)
+mesh = SubResource("PlaneMesh_gn5tf")
+surface_material_override/0 = SubResource("StandardMaterial3D_017oo")
+
+[node name="16" type="MeshInstance3D" parent="ScoreGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.55165, 0.0630169, 2.98541)
+mesh = SubResource("PlaneMesh_gn5tf")
+surface_material_override/0 = SubResource("StandardMaterial3D_017oo")
+
+[node name="TopBar" parent="." instance=ExtResource("10_otnlf")]
+script = ExtResource("11_aeibh")
+
+[node name="HoldGrid" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.40358, 0, 18.053)
+visible = false
+
+[node name="1" type="MeshInstance3D" parent="HoldGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.19835, 0.0630169, -3.76459)
+mesh = SubResource("PlaneMesh_gn5tf")
+surface_material_override/0 = SubResource("StandardMaterial3D_017oo")
+
+[node name="2" type="MeshInstance3D" parent="HoldGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.948345, 0.0630169, -3.76459)
+mesh = SubResource("PlaneMesh_gn5tf")
+surface_material_override/0 = SubResource("StandardMaterial3D_017oo")
+
+[node name="3" type="MeshInstance3D" parent="HoldGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.30165, 0.0630169, -3.76459)
+mesh = SubResource("PlaneMesh_gn5tf")
+surface_material_override/0 = SubResource("StandardMaterial3D_017oo")
+
+[node name="4" type="MeshInstance3D" parent="HoldGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.55165, 0.0630169, -3.76459)
+mesh = SubResource("PlaneMesh_gn5tf")
+surface_material_override/0 = SubResource("StandardMaterial3D_017oo")
+
+[node name="5" type="MeshInstance3D" parent="HoldGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.19835, 0.0630169, -1.51459)
+mesh = SubResource("PlaneMesh_gn5tf")
+surface_material_override/0 = SubResource("StandardMaterial3D_017oo")
+
+[node name="6" type="MeshInstance3D" parent="HoldGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.948345, 0.0630169, -1.51459)
+mesh = SubResource("PlaneMesh_gn5tf")
+surface_material_override/0 = SubResource("StandardMaterial3D_017oo")
+
+[node name="7" type="MeshInstance3D" parent="HoldGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.30165, 0.0630169, -1.51459)
+mesh = SubResource("PlaneMesh_gn5tf")
+surface_material_override/0 = SubResource("StandardMaterial3D_017oo")
+
+[node name="8" type="MeshInstance3D" parent="HoldGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.55165, 0.0630169, -1.51459)
+mesh = SubResource("PlaneMesh_gn5tf")
+surface_material_override/0 = SubResource("StandardMaterial3D_017oo")
+
+[node name="9" type="MeshInstance3D" parent="HoldGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.19835, 0.0630169, 0.735411)
+mesh = SubResource("PlaneMesh_gn5tf")
+surface_material_override/0 = SubResource("StandardMaterial3D_017oo")
+
+[node name="10" type="MeshInstance3D" parent="HoldGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.948345, 0.0630169, 0.735411)
+mesh = SubResource("PlaneMesh_gn5tf")
+surface_material_override/0 = SubResource("StandardMaterial3D_017oo")
+
+[node name="11" type="MeshInstance3D" parent="HoldGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.30165, 0.0630169, 0.735411)
+mesh = SubResource("PlaneMesh_gn5tf")
+surface_material_override/0 = SubResource("StandardMaterial3D_017oo")
+
+[node name="12" type="MeshInstance3D" parent="HoldGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.55165, 0.0630169, 0.735411)
+mesh = SubResource("PlaneMesh_gn5tf")
+surface_material_override/0 = SubResource("StandardMaterial3D_017oo")
+
+[node name="13" type="MeshInstance3D" parent="HoldGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.19835, 0.0630169, 2.98541)
+mesh = SubResource("PlaneMesh_gn5tf")
+surface_material_override/0 = SubResource("StandardMaterial3D_017oo")
+
+[node name="14" type="MeshInstance3D" parent="HoldGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.948345, 0.0630169, 2.98541)
+mesh = SubResource("PlaneMesh_gn5tf")
+surface_material_override/0 = SubResource("StandardMaterial3D_017oo")
+
+[node name="15" type="MeshInstance3D" parent="HoldGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.30165, 0.0630169, 2.98541)
+mesh = SubResource("PlaneMesh_gn5tf")
+surface_material_override/0 = SubResource("StandardMaterial3D_017oo")
+
+[node name="16" type="MeshInstance3D" parent="HoldGrid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.55165, 0.0630169, 2.98541)
+mesh = SubResource("PlaneMesh_gn5tf")
+surface_material_override/0 = SubResource("StandardMaterial3D_017oo")
+
+[connection signal="input_event" from="D8" to="GameManager" method="_on_d_8_input_event"]
+[connection signal="input_event" from="D4" to="GameManager" method="_on_d_4_input_event"]
+[connection signal="input_event" from="D6" to="GameManager" method="_on_d_6_input_event"]
+[connection signal="input_event" from="D10" to="GameManager" method="_on_d_10_input_event"]
+[connection signal="input_event" from="D12" to="GameManager" method="_on_d_12_input_event"]
+[connection signal="input_event" from="D20" to="GameManager" method="_on_d_20_input_event"]
+[connection signal="input_event" from="D10-2" to="GameManager" method="_on_d_102_input_event"]

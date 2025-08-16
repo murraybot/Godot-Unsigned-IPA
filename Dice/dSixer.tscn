@@ -1,0 +1,99 @@
+[gd_scene load_steps=16 format=3 uid="uid://b3ui0g2syhj75"]
+
+[ext_resource type="ArrayMesh" uid="uid://ceenmf8h7c2lr" path="res://Assets/models/dSix-mesh.tres" id="1_lx1an"]
+[ext_resource type="Script" uid="uid://gwi18kwu80kh" path="res://Scripts/die.gd" id="1_ouydt"]
+[ext_resource type="Material" uid="uid://bhjlftywe0ryh" path="res://Dice/Materials/d6Normal.tres" id="3_ouydt"]
+[ext_resource type="AudioStream" uid="uid://d26a41uuduq3i" path="res://Assets/sfx/gas canister dropped 3.wav" id="4_mk2ac"]
+[ext_resource type="AudioStream" uid="uid://vagp1s8qmgob" path="res://Assets/sfx/impactWood_medium_003.ogg" id="5_v2xs2"]
+[ext_resource type="AudioStream" uid="uid://dgdtgvtl1yfh5" path="res://Assets/sfx/impactWood_light_001.ogg" id="6_cefvg"]
+[ext_resource type="AudioStream" uid="uid://doqte1wvq8km7" path="res://Assets/sfx/impactPunch_heavy_003.ogg" id="7_2kjk8"]
+[ext_resource type="AudioStream" uid="uid://ds02h20648kbs" path="res://Assets/sfx/impactGeneric_light_003.ogg" id="8_jc8lj"]
+[ext_resource type="AudioStream" uid="uid://cw1cjs7jadjs8" path="res://Assets/sfx/die-throw-4.ogg" id="9_har7d"]
+[ext_resource type="AudioStream" uid="uid://bpbwobd61p475" path="res://Assets/sfx/die-throw-3.ogg" id="10_2el5m"]
+[ext_resource type="AudioStream" uid="uid://bde3jbxvjwbm4" path="res://Assets/sfx/die-throw-2.ogg" id="11_c4u1k"]
+[ext_resource type="AudioStream" uid="uid://dg6sc75avrqi4" path="res://Assets/sfx/dice-throw-3.ogg" id="12_1rtg4"]
+[ext_resource type="AudioStream" uid="uid://cgmr2bfjofx6f" path="res://Assets/sfx/dice-throw-1.ogg" id="13_5aby4"]
+
+[sub_resource type="Skin" id="Skin_mwy0y"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_lx1an"]
+points = PackedVector3Array(0.00677131, 0.007524, 0.00677131, 0.00677131, 0.007524, -0.00677278, -0.00677278, 0.007524, 0.00677131, 0.00677131, 0.00730305, 0.00730305, 0.00720584, 0.00720584, 0.00720584, 0.00730305, 0.00730305, 0.00677131, 0.00677131, 0.00730305, -0.00730453, -0.00677278, 0.007524, -0.00677278, 0.00730305, 0.00730305, -0.00677278, 0.00720584, 0.00720584, -0.00720731, -0.00730453, 0.00730305, 0.00677131, -0.00720731, 0.00720584, 0.00720584, -0.00677278, 0.00730305, 0.00730305, 0.00677131, 0.00677131, 0.007524, 0.00730305, 0.00677131, 0.00730305, 0.007524, 0.00677131, 0.00677131, 0.00677131, 0.00677131, -0.007524, -0.00677278, 0.00730305, -0.00730453, -0.00720731, 0.00720584, -0.00720731, -0.00730453, 0.00730305, -0.00677278, 0.007524, 0.00677131, -0.00677278, 0.00730305, 0.00677131, -0.00730453, -0.007524, 0.00677131, 0.00677131, -0.00677278, 0.00677131, 0.007524, -0.00730453, 0.00677131, 0.00730305, 0.00677131, -0.00677278, 0.007524, 0.00730305, -0.00677278, 0.00730305, 0.007524, -0.00677278, 0.00677131, 0.00677131, -0.00677278, -0.007524, -0.00677278, 0.00677131, -0.007524, -0.00730453, 0.00677131, -0.00730453, -0.007524, 0.00677131, -0.00677278, 0.007524, -0.00677278, -0.00677278, 0.00730305, -0.00677278, -0.00730453, -0.007524, -0.00677278, 0.00677131, -0.00677278, -0.00677278, 0.007524, -0.00730453, -0.00677278, 0.00730305, 0.00677131, -0.00730453, 0.00730305, 0.00720584, -0.00720731, 0.00720584, 0.00730305, -0.00730453, 0.00677131, 0.00720584, -0.00720731, -0.00720731, 0.00677131, -0.00730453, -0.00730453, -0.00677278, -0.00677278, -0.007524, -0.00730453, -0.00677278, -0.00730453, -0.007524, -0.00677278, -0.00677278, 0.00730305, -0.00730453, -0.00677278, -0.00730453, -0.00730453, 0.00677131, -0.00720731, -0.00720731, 0.00720584, -0.00677278, -0.00730453, 0.00730305, 0.00677131, -0.007524, 0.00677131, 0.00677131, -0.007524, -0.00677278, -0.00677278, -0.00730453, -0.00730453, -0.00720731, -0.00720731, -0.00720731, -0.00730453, -0.00730453, -0.00677278, -0.00677278, -0.007524, 0.00677131, -0.00677278, -0.007524, -0.00677278)
+
+[node name="D6" type="RigidBody3D" groups=["dice"]]
+contact_monitor = true
+max_contacts_reported = 10
+script = ExtResource("1_ouydt")
+
+[node name="D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, -100, 1.50996e-05, 0, -1.50996e-05, -100, -0.00371552, -0.0747203, -0.0855346)
+mesh = ExtResource("1_lx1an")
+skin = SubResource("Skin_mwy0y")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("3_ouydt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, -100, 1.50996e-05, 0, -1.50996e-05, -100, -0.00371552, -0.0747203, -0.0855346)
+shape = SubResource("ConvexPolygonShape3D_lx1an")
+
+[node name="values" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17009, 0)
+
+[node name="1" type="Node3D" parent="values"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.871641, -0.194186, 0.00708193)
+
+[node name="2" type="Node3D" parent="values"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00751847, -1.14333, 0.014712)
+
+[node name="3" type="Node3D" parent="values"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.863986, -0.347454, -0.221785)
+
+[node name="4" type="Node3D" parent="values"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0297818, -0.262352, -1.00904)
+
+[node name="5" type="Node3D" parent="values"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0373101, -0.318069, 0.776132)
+
+[node name="6" type="Node3D" parent="values"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0332616, 0.648143, -0.0549283)
+
+[node name="impacts" type="Node3D" parent="."]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="impacts"]
+stream = ExtResource("4_mk2ac")
+bus = &"SFX"
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="impacts"]
+stream = ExtResource("5_v2xs2")
+bus = &"SFX"
+
+[node name="AudioStreamPlayer3D3" type="AudioStreamPlayer3D" parent="impacts"]
+stream = ExtResource("6_cefvg")
+bus = &"SFX"
+
+[node name="AudioStreamPlayer3D4" type="AudioStreamPlayer3D" parent="impacts"]
+stream = ExtResource("7_2kjk8")
+bus = &"SFX"
+
+[node name="AudioStreamPlayer3D5" type="AudioStreamPlayer3D" parent="impacts"]
+stream = ExtResource("8_jc8lj")
+bus = &"SFX"
+
+[node name="AudioStreamPlayer3D6" type="AudioStreamPlayer3D" parent="impacts"]
+stream = ExtResource("9_har7d")
+bus = &"SFX"
+
+[node name="AudioStreamPlayer3D7" type="AudioStreamPlayer3D" parent="impacts"]
+stream = ExtResource("10_2el5m")
+bus = &"SFX"
+
+[node name="AudioStreamPlayer3D8" type="AudioStreamPlayer3D" parent="impacts"]
+stream = ExtResource("11_c4u1k")
+bus = &"SFX"
+
+[node name="AudioStreamPlayer3D9" type="AudioStreamPlayer3D" parent="impacts"]
+stream = ExtResource("12_1rtg4")
+bus = &"SFX"
+
+[node name="AudioStreamPlayer3D10" type="AudioStreamPlayer3D" parent="impacts"]
+stream = ExtResource("13_5aby4")
+bus = &"SFX"

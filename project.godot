@@ -1,0 +1,51 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="DevilsFarkle"
+run/main_scene="uid://bq6vqtq6vpadi"
+config/features=PackedStringArray("4.4", "GL Compatibility")
+boot_splash/bg_color=Color(0.187893, 0.185297, 0, 1)
+boot_splash/image="uid://cnpmudd0jl7vm"
+config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1080
+window/size/viewport_height=1920
+window/size/extend_to_title=true
+window/size/window_width_override=500
+window/size/window_height_override=890
+window/stretch/mode="canvas_items"
+window/per_pixel_transparency/allowed=true
+window/handheld/orientation=1
+window/ios/hide_status_bar=false
+
+[editor]
+
+movie_writer/movie_file="C:/Users/johnm/OneDrive/Documents/DF.avi"
+
+[navigation]
+
+3d/default_cell_size=0.1
+
+[physics]
+
+3d/physics_engine="Jolt Physics"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
+anti_aliasing/quality/msaa_3d=1
+anti_aliasing/quality/screen_space_aa=1
+anti_aliasing/quality/use_debanding=true

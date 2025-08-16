@@ -1,0 +1,65 @@
+[gd_scene load_steps=12 format=3 uid="uid://bq6vqtq6vpadi"]
+
+[ext_resource type="PackedScene" uid="uid://nuvqf2inewy2" path="res://board_group.tscn" id="1_p2goe"]
+[ext_resource type="PackedScene" uid="uid://d4j5j1uwwjnrt" path="res://Dice/dTwelve.tscn" id="3_p2goe"]
+[ext_resource type="PackedScene" uid="uid://chicp3ybyxpgd" path="res://Dice/dEight.tscn" id="4_vmwg3"]
+[ext_resource type="PackedScene" uid="uid://cu4c7ttoonbqx" path="res://Dice/dFour.tscn" id="5_gn5tf"]
+[ext_resource type="PackedScene" uid="uid://b3ui0g2syhj75" path="res://Dice/dSixer.tscn" id="6_017oo"]
+[ext_resource type="PackedScene" uid="uid://duaakrb724upj" path="res://Dice/dTwenty.tscn" id="7_2wnlw"]
+[ext_resource type="PackedScene" uid="uid://coqnwnwqqpk2i" path="res://Dice/dTen.tscn" id="7_chkvq"]
+[ext_resource type="Script" uid="uid://dnqnnc52yp8nt" path="res://Dice/game_manager.gd" id="8_vmwg3"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p2goe"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_vmwg3"]
+sky_material = SubResource("ProceduralSkyMaterial_p2goe")
+
+[sub_resource type="Environment" id="Environment_gn5tf"]
+background_mode = 2
+sky = SubResource("Sky_vmwg3")
+tonemap_mode = 2
+
+[node name="TurnBased" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gn5tf")
+
+[node name="StaticBody3D" parent="." instance=ExtResource("1_p2goe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.123657, 0, -0.114014)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.125526, 23.5769, 4.15485)
+keep_aspect = 0
+projection = 1
+size = 20.0
+near = 0.024
+far = 251.45
+
+[node name="D8" parent="." instance=ExtResource("4_vmwg3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62025, 0)
+
+[node name="D4" parent="." instance=ExtResource("5_gn5tf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.07382, 1.62025, 4.79424)
+
+[node name="D6" parent="." instance=ExtResource("6_017oo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.87591, 1.62025, 0)
+
+[node name="D10" parent="." instance=ExtResource("7_chkvq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62025, -3.76272)
+
+[node name="D12" parent="." instance=ExtResource("3_p2goe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.87957, 1.62025, 0)
+
+[node name="D20" parent="." instance=ExtResource("7_2wnlw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62025, 5.90644)
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("8_vmwg3")
+
+[connection signal="input_event" from="D12" to="GameManager" method="_on_d_12_input_event"]
