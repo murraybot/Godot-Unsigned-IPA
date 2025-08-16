@@ -49,7 +49,7 @@ jobs:
           zip -r ../ios_project.ipa Payload
 
       - name: Upload IPA Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ios_project.ipa
           path: build/ios_project.xcarchive/Products/ios_project.ipa
